@@ -16,9 +16,9 @@ public class FileReader {
                 data.append((char) ch);
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("File not found");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.out.println("IO exception");
         }
         return getProfileFromString(data.toString());
     }
