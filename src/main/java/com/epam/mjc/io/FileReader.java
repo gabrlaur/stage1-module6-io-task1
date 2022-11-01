@@ -2,6 +2,7 @@ package com.epam.mjc.io;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
@@ -14,6 +15,8 @@ public class FileReader {
             while((ch = fileInputStream.read()) != -1) {
                 data.append((char) ch);
             }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
