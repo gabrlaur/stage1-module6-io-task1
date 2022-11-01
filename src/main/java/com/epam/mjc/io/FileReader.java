@@ -16,7 +16,7 @@ public class FileReader {
                 data.append((char) ch);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("File not found");
+            System.out.println("File not found exception");
         } catch (IOException e) {
             System.out.println("IO exception");
         }
