@@ -4,21 +4,24 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class FileReader {
+    private static final Logger LOGGER = Logger.getLogger(FileReader.class.getName());
 
     public static Profile getDataFromFile(File file) {
         StringBuilder data = new StringBuilder();
         try (FileInputStream fileInputStream = new FileInputStream(file)) {
             int ch;
-            while((ch = fileInputStream.read()) != -1) {
+            while ((ch = fileInputStream.read()) != -1) {
                 data.append((char) ch);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("File not found exception");
+            LOGGER.log(Level.SEVERE, "File not found exception");
         } catch (IOException e) {
-            System.out.println("IO exception");
+            LOGGER.log(Level.SEVERE, "IO exception");
         }
         return getProfileFromString(data.toString());
     }
